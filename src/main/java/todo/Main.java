@@ -1,15 +1,17 @@
 package todo;
 
 import todo.service.TaskService;
+import todo.ui.ConsolePrinter;
 import todo.ui.ConsoleUI;
 import todo.ui.Messages;
 
 
 public class Main {
     public static void main(String[] args) {
-        Messages message = new Messages();
         TaskService task = new TaskService();
         ConsoleUI console = new ConsoleUI();
+        Messages message = new Messages();
+        ConsolePrinter consolePrinter = new ConsolePrinter();
 
 
         int choise = 0;
@@ -32,12 +34,12 @@ public class Main {
                     task.markTaskDone();
                     break;
                 case 6:
-                    message.printExit();
+                    consolePrinter.printInfo(message.exit());
                     break;
                 default:
                     throw new IllegalArgumentException("Unexpected menu option: " + choise);
             }
         }
-        message.printFinished();
+        consolePrinter.printInfo(message.finished());
     }
 }
