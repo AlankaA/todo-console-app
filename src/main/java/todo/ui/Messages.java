@@ -1,6 +1,7 @@
 package todo.ui;
 
 public class Messages {
+    // MENU
     private static final String MENU = """
             \n========MENU========
             Chose one from the option:
@@ -11,31 +12,35 @@ public class Messages {
             5. Mark task done
             6. Exit
             =====================""";
+    // INFO
     private static final String EXIT = "Exiting...";
     private static final String FINISHED = "Program is finished!";
+    // ERROR
     private static final String EMPTY_IS_NOT_ALLOWED = "Empty input is not allowed.";
     public static final String ENTER_INTEGER = "Invalid input. Enter an integer.";
     public static final String MENU_INVALID_OPTION = "Invalid option. Choose 1-6.";
 
-    public String printMenu() {
+    public String menu() {
         return MENU;
     }
 
-    public void printExit() {
-        System.out.println(EXIT);
+    public String exit() {
+        return EXIT;
     }
 
-    public void printFinished() {
-        System.out.println(FINISHED);
+    public String finished() {
+        return FINISHED;
     }
 
-    public void printEmptyIsNotAllowed() {
-        System.out.println(EMPTY_IS_NOT_ALLOWED);
+    public String EmptyIsNotAllowed() {
+        return EMPTY_IS_NOT_ALLOWED;
     }
-    public void printEnterInteger() {
-        System.out.println(ENTER_INTEGER);
+
+    public String enterInteger() {
+        return ENTER_INTEGER;
     }
-    public void printMenuInvalidOption() {
-        System.out.println(MENU_INVALID_OPTION);
+
+    public String menuInvalidOption() {
+        return MENU_INVALID_OPTION;
     }
 }

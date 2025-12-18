@@ -4,28 +4,25 @@ public class ConsoleUI {
     InputValidator validator = new InputValidator();
     InputReader reader = new InputReader();
     Messages message = new Messages();
+    ConsolePrinter consolePrinter = new ConsolePrinter();
 
     public int start() {
         while (true) {
             try {
-                String input = reader.readInput(message.printMenu());
+                String input = reader.readInput(message.menu());
                 input = input.trim();
                 if (input.isEmpty()) {
-                    message.printEmptyIsNotAllowed();
+                    consolePrinter.printError(message.EmptyIsNotAllowed());
                     continue;
                 }
                 int parsedInput = Integer.parseInt(input);
-                validator.validateMenuInput(parsedInput);
-                if (validator.validateMenuInput(parsedInput)) {
-                    return parsedInput;
-                }
                 if (!validator.validateMenuInput(parsedInput)) {
-                    message.printMenuInvalidOption();
+                    consolePrinter.printError(message.menuInvalidOption());
                     continue;
                 }
-
+                return parsedInput;
             } catch (NumberFormatException e) {
-                message.printEnterInteger();
+                consolePrinter.printError(message.enterInteger());
             }
         }
     }
