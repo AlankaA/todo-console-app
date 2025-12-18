@@ -1,7 +1,5 @@
 package todo.model;
 
-import java.util.Scanner;
-
 public class Task {
     private final int id;
     private String name;
@@ -33,17 +31,19 @@ public class Task {
     }
 
 
-    public void setName(Scanner input, String taskName) {
-        while (true) {
-            System.out.println("Enter the task name:");
-            taskName = input.nextLine();
-            taskName = taskName.trim();
-            if (taskName.isEmpty()) {
-                System.out.println("[ERROR] Task name cannot be empty!");
-                continue;
-            }
-            this.name = taskName;
-            break;
-        }
+    public void setName(String taskName) {
+        this.name = taskName;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void markDone() {
+        this.done = true;
+    }
+
+    public void unmarkDone() {
+        this.done = false;
     }
 }

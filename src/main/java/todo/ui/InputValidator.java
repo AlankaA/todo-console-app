@@ -8,4 +8,16 @@ public class InputValidator {
         }
         return true;
     }
+
+    public boolean validateTaskName(String taskName) {
+        taskName = taskName.trim();
+        if (taskName.isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validateDescription(String taskName) {
+        return true;
+    }
 }
