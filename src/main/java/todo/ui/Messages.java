@@ -14,9 +14,11 @@ public class Messages {
     private static final String EXIT = "Exiting...";
     private static final String FINISHED = "Program is finished!";
     private static final String EMPTY_IS_NOT_ALLOWED = "Empty input is not allowed.";
+    public static final String ENTER_INTEGER = "Invalid input. Enter an integer.";
+    public static final String MENU_INVALID_OPTION = "Invalid option. Choose 1-6.";
 
-    public void printMenu() {
-        System.out.println(MENU);
+    public String printMenu() {
+        return MENU;
     }
 
     public void printExit() {
@@ -29,5 +31,11 @@ public class Messages {
 
     public void printEmptyIsNotAllowed() {
         System.out.println(EMPTY_IS_NOT_ALLOWED);
+    }
+    public void printEnterInteger() {
+        System.out.println(ENTER_INTEGER);
+    }
+    public void printMenuInvalidOption() {
+        System.out.println(MENU_INVALID_OPTION);
     }
 }
