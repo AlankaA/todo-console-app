@@ -13,7 +13,6 @@ public class Task {
         this.done = false;
     }
 
-
     public int getId() {
         return this.id;
     }

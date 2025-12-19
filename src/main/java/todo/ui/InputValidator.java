@@ -9,6 +9,13 @@ public class InputValidator {
         return true;
     }
 
+    public int validateTaskID(String taskID) {
+        taskID = taskID.trim();
+        int taskIDInt = Integer.parseInt(taskID);
+        return taskIDInt;
+
+    }
+
     public boolean validateTaskName(String taskName) {
         taskName = taskName.trim();
         if (taskName.isEmpty()) {
