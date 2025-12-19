@@ -32,16 +32,11 @@ public class ConsoleUI {
     public Task createTask() {
         while (true) {
             String taskName = reader.readInput(message.taskName());
-            if (!validator.validateTaskName(taskName)) {
+            if (!validator.validateNotEmpty(taskName)) {
                 consolePrinter.printError(message.emptyIsNotAllowed());
                 continue;
             }
-
-            String taskDescription = reader.readInput(message.taskDescription());
-            if (!validator.validateDescription(taskDescription)) {
-                continue;
-            }
-            Task task = new Task(1,taskName, taskDescription);
+            Task task = new Task(1,taskName, "taskDescription");
             return task;
         }
     }
