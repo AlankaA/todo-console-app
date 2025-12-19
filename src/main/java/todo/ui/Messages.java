@@ -15,15 +15,26 @@ public class Messages {
     // INFO
     private static final String EXIT = "Exiting...";
     private static final String FINISHED = "Program is finished!";
+    private static final String TASK_ADDED = "Task added!";
+    private static final String TASK_DELETED = "Task deleted!";
+    private static final String TASK_UPDATED = "Task updated!";
+    private static final String TASK_DONE = "Task Done:";
+    // PROMPT
+    private static final String TASK_NAME = "Enter task name:";
+    private static final String TASK_DESCRIPTION = "Enter task description:";
     // ERROR
     private static final String EMPTY_IS_NOT_ALLOWED = "Empty input is not allowed.";
-    public static final String ENTER_INTEGER = "Invalid input. Enter an integer.";
-    public static final String MENU_INVALID_OPTION = "Invalid option. Choose 1-6.";
+    private static final String ENTER_INTEGER = "Invalid input. Enter an integer.";
+    private static final String MENU_INVALID_OPTION = "Invalid option. Choose 1-6.";
+    private static final String UNEXPECTED_MENU_OPTION = "Unexpected menu option:";
 
+
+    //MENU
     public String menu() {
         return MENU;
     }
 
+    // INFO
     public String exit() {
         return EXIT;
     }
@@ -32,7 +43,33 @@ public class Messages {
         return FINISHED;
     }
 
-    public String EmptyIsNotAllowed() {
+    public String taskAdded() {
+        return TASK_ADDED;
+    }
+
+    public String taskDeleted() {
+        return TASK_DELETED;
+    }
+
+    public String taskUpdated() {
+        return TASK_UPDATED;
+    }
+
+    public String taskDone() {
+        return TASK_DONE;
+    }
+
+    // PROMPT
+    public String taskName() {
+        return TASK_NAME;
+    }
+
+    public String taskDescription() {
+        return TASK_DESCRIPTION;
+    }
+
+    // ERROR
+    public String emptyIsNotAllowed() {
         return EMPTY_IS_NOT_ALLOWED;
     }
 
@@ -42,5 +79,9 @@ public class Messages {
 
     public String menuInvalidOption() {
         return MENU_INVALID_OPTION;
+    }
+
+    public String unexpectedMenuOption() {
+        return UNEXPECTED_MENU_OPTION;
     }
 }

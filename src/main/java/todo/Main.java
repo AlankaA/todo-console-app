@@ -1,17 +1,15 @@
 package todo;
 
 import todo.service.TaskService;
-import todo.ui.ConsolePrinter;
-import todo.ui.ConsoleUI;
-import todo.ui.Messages;
+import todo.ui.*;
 
 
 public class Main {
     public static void main(String[] args) {
-        TaskService task = new TaskService();
+        TaskService taskService = new TaskService();
+        ConsolePrinter consolePrinter = new ConsolePrinter();
         ConsoleUI console = new ConsoleUI();
         Messages message = new Messages();
-        ConsolePrinter consolePrinter = new ConsolePrinter();
 
 
         int choise = 0;
@@ -19,19 +17,19 @@ public class Main {
             choise = console.start();
             switch (choise) {
                 case 1:
-                    task.addTask();
+                    taskService.addTask(console.createTask());
                     break;
                 case 2:
-                    task.deleteTask();
+                    taskService.deleteTask();
                     break;
                 case 3:
-                    task.updateTask();
+                    taskService.updateTask();
                     break;
                 case 4:
-                    task.getListTask();
+                    taskService.getListTask();
                     break;
                 case 5:
-                    task.markTaskDone();
+                    taskService.markTaskDone();
                     break;
                 case 6:
                     consolePrinter.printInfo(message.exit());

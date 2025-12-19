@@ -1,5 +1,7 @@
 package todo.ui;
 
+import todo.model.Task;
+
 public class ConsoleUI {
     InputValidator validator = new InputValidator();
     InputReader reader = new InputReader();
@@ -12,7 +14,7 @@ public class ConsoleUI {
                 String input = reader.readInput(message.menu());
                 input = input.trim();
                 if (input.isEmpty()) {
-                    consolePrinter.printError(message.EmptyIsNotAllowed());
+                    consolePrinter.printError(message.emptyIsNotAllowed());
                     continue;
                 }
                 int parsedInput = Integer.parseInt(input);
@@ -24,6 +26,18 @@ public class ConsoleUI {
             } catch (NumberFormatException e) {
                 consolePrinter.printError(message.enterInteger());
             }
+        }
+    }
+
+    public Task createTask() {
+        while (true) {
+            String taskName = reader.readInput(message.taskName());
+            if (!validator.validateNotEmpty(taskName)) {
+                consolePrinter.printError(message.emptyIsNotAllowed());
+                continue;
+            }
+            Task task = new Task(1,taskName, "taskDescription");
+            return task;
         }
     }
 }
