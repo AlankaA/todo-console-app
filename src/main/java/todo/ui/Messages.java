@@ -4,7 +4,7 @@ public class Messages {
     // MENU
     private static final String MENU = """
             \n========MENU========
-            Chose one from the option:
+            Choose one from the options:
             1. Add task
             2. Delete task
             3. Update task

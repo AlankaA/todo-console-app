@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class TaskService {
     ArrayList<Task> listTasks = new ArrayList<>();
 
-    public void addTask(Task task) {
-        listTasks.add(task);
+    public void addTask() {
+        System.out.println("Task added.");
     }
 
     public void deleteTask() {

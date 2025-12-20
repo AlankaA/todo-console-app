@@ -2,22 +2,26 @@ package todo;
 
 import todo.service.TaskService;
 import todo.ui.*;
+import java.util.Scanner;
 
 
 public class Main {
     public static void main(String[] args) {
-        TaskService taskService = new TaskService();
-        ConsolePrinter consolePrinter = new ConsolePrinter();
-        ConsoleUI console = new ConsoleUI();
-        Messages message = new Messages();
+        final TaskService taskService = new TaskService();
+        final ConsolePrinter printer = new ConsolePrinter();
+        final Scanner input = new Scanner(System.in);
+        final InputReader reader = new InputReader(input);
+        final InputValidator validator = new InputValidator();
+        final Messages messages = new Messages();
+        final ConsoleUI console = new ConsoleUI(reader, messages, printer, validator);
 
 
-        int choise = 0;
-        while (choise != 6) {
-            choise = console.start();
-            switch (choise) {
+        int choice = 0;
+        while (choice != 6) {
+            choice = console.start();
+            switch (choice) {
                 case 1:
-                    taskService.addTask(console.createTask());
+                    taskService.addTask();
                     break;
                 case 2:
                     taskService.deleteTask();
@@ -32,12 +36,12 @@ public class Main {
                     taskService.markTaskDone();
                     break;
                 case 6:
-                    consolePrinter.printInfo(message.exit());
+                    printer.printInfo(messages.exit());
                     break;
                 default:
-                    throw new IllegalArgumentException("Unexpected menu option: " + choise);
+                    throw new IllegalArgumentException("Unexpected menu option: " + choice);
             }
         }
-        consolePrinter.printInfo(message.finished());
+        printer.printInfo(messages.finished());
     }
 }
