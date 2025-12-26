@@ -1,7 +1,5 @@
 package todo.ui;
 
-import todo.model.Task;
-
 public class ConsoleUI {
     private final InputReader reader;
     private final Messages messages;
@@ -37,4 +35,6 @@ public class ConsoleUI {
             }
         }
     }
+
+
 }
