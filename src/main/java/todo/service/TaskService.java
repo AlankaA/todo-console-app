@@ -4,10 +4,14 @@ import todo.model.Task;
 import java.util.ArrayList;
 
 public class TaskService {
-    ArrayList<Task> listTasks = new ArrayList<>();
+    private ArrayList<Task> listTasks = new ArrayList<>();
 
-    public void addTask(Task task) {
-        listTasks.add(task);
+    private int nextId = 0;
+
+    public void addTask(String name, String description) {
+        nextId += 1;
+        listTasks.add(new Task(nextId, name, description));
+        System.out.println("Task added.");
     }
 
     public void deleteTask() {

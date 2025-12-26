@@ -3,10 +3,13 @@ package todo.ui;
 import java.util.Scanner;
 
 public class InputReader {
-    Scanner input = new Scanner(System.in);
+    private final Scanner input;
 
-    public String readInput(String prompt) {
-        System.out.println(prompt);
+    public InputReader(Scanner input) {
+        this.input = input;
+    }
+
+    public String readInput() {
         return input.nextLine();
     }
 }

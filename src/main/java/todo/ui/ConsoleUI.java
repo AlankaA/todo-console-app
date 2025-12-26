@@ -1,43 +1,40 @@
 package todo.ui;
 
-import todo.model.Task;
-
 public class ConsoleUI {
-    InputValidator validator = new InputValidator();
-    InputReader reader = new InputReader();
-    Messages message = new Messages();
-    ConsolePrinter consolePrinter = new ConsolePrinter();
+    private final InputReader reader;
+    private final Messages messages;
+    private final ConsolePrinter printer;
+    private final InputValidator validator;
+
+    public ConsoleUI(InputReader reader, Messages messages, ConsolePrinter printer, InputValidator validator) {
+        this.reader = reader;
+        this.messages = messages;
+        this.printer = printer;
+        this.validator = validator;
+    }
+
 
     public int start() {
         while (true) {
             try {
-                String input = reader.readInput(message.menu());
+                printer.print(messages.menu());
+                String input = reader.readInput();
                 input = input.trim();
                 if (input.isEmpty()) {
-                    consolePrinter.printError(message.emptyIsNotAllowed());
+                    printer.printError(messages.emptyIsNotAllowed());
                     continue;
                 }
                 int parsedInput = Integer.parseInt(input);
                 if (!validator.validateMenuInput(parsedInput)) {
-                    consolePrinter.printError(message.menuInvalidOption());
+                    printer.printError(messages.menuInvalidOption());
                     continue;
                 }
                 return parsedInput;
             } catch (NumberFormatException e) {
-                consolePrinter.printError(message.enterInteger());
+                printer.printError(messages.enterInteger());
             }
         }
     }
 
-    public Task createTask() {
-        while (true) {
-            String taskName = reader.readInput(message.taskName());
-            if (!validator.validateNotEmpty(taskName)) {
-                consolePrinter.printError(message.emptyIsNotAllowed());
-                continue;
-            }
-            Task task = new Task(1,taskName, "taskDescription");
-            return task;
-        }
-    }
+
 }

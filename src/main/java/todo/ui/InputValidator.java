@@ -9,6 +9,6 @@ public class InputValidator {
 
     public boolean validateNotEmpty(String taskName) {
         taskName = taskName.trim();
-        return !taskName.isEmpty();
+        return taskName.isEmpty();
     }
 }
