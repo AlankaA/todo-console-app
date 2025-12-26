@@ -1,5 +1,6 @@
 package todo;
 
+import todo.model.Task;
 import todo.service.TaskService;
 import todo.ui.*;
 import java.util.Scanner;
@@ -21,7 +22,7 @@ public class Main {
             choice = console.start();
             switch (choice) {
                 case 1:
-                    taskService.addTask();
+                    taskService.addTask("name","description");
                     break;
                 case 2:
                     taskService.deleteTask();
