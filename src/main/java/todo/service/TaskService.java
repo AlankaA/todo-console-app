@@ -11,7 +11,6 @@ public class TaskService {
     public void addTask(String name, String description) {
         nextId += 1;
         listTasks.add(new Task(nextId, name, description));
-        System.out.println("Task added.");
     }
 
     public void deleteTask() {
