@@ -1,6 +1,5 @@
 package todo;
 
-import todo.model.Task;
 import todo.service.TaskService;
 import todo.ui.*;
 import java.util.Scanner;
@@ -14,35 +13,10 @@ public class Main {
         final InputReader reader = new InputReader(input);
         final InputValidator validator = new InputValidator();
         final Messages messages = new Messages();
-        final ConsoleUI console = new ConsoleUI(reader, messages, printer, validator);
+        final ConsoleUI console = new ConsoleUI(reader, messages, printer, validator, taskService);
 
 
-        int choice = 0;
-        while (choice != 6) {
-            choice = console.start();
-            switch (choice) {
-                case 1:
-                    taskService.addTask("name","description");
-                    break;
-                case 2:
-                    taskService.deleteTask();
-                    break;
-                case 3:
-                    taskService.updateTask();
-                    break;
-                case 4:
-                    taskService.getListTask();
-                    break;
-                case 5:
-                    taskService.markTaskDone();
-                    break;
-                case 6:
-                    printer.printInfo(messages.exit());
-                    break;
-                default:
-                    throw new IllegalArgumentException("Unexpected menu option: " + choice);
-            }
-        }
-        printer.printInfo(messages.finished());
+        console.start();
+        console.finish();
     }
 }
