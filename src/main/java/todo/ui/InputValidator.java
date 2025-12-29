@@ -10,4 +10,8 @@ public class InputValidator {
     public boolean isNotEmpty(String input) {
         return input != null && !input.trim().isEmpty();
     }
+
+    public boolean isNotNegative(int inputInt) {
+        return inputInt >= 0;
+    }
 }
