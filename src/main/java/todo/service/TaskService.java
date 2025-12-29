@@ -2,31 +2,37 @@ package todo.service;
 
 import todo.model.Task;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskService {
-    private ArrayList<Task> listTasks = new ArrayList<>();
-
+    final ArrayList<Task> listTasks;
     private int nextId = 0;
+
+    public TaskService() {
+        listTasks = new ArrayList<Task>();
+    }
 
     public void addTask(String name, String description) {
         nextId += 1;
         listTasks.add(new Task(nextId, name, description));
     }
 
-    public void deleteTask() {
-        System.out.println("Task deleted.");
+    public void deleteTask(int id) {
+        listTasks.remove(id);
     }
 
     public void updateTask() {
-        System.out.println("update task");
+
     }
 
-    public void getListTask() {
-        System.out.println("get list task");
+    public List<Task> getListTask(){
+        return listTasks;
     }
 
-    public void markTaskDone() {
-        System.out.println("mark task done");
+    public void markTaskDone() {}
 
+    public int getId(){
+        int id = 0;
+        return id;
     }
 }

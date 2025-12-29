@@ -1,6 +1,9 @@
 package todo.ui;
 
+import todo.model.Task;
 import todo.service.TaskService;
+
+import java.util.List;
 
 public class ConsoleUI {
     private final InputReader reader;
@@ -29,6 +32,23 @@ public class ConsoleUI {
             return input.trim();
         }
     }
+
+    public int readNonNegativeInteger(String prompt) {
+        while (true) {
+            String input = readNonEmptyInput(prompt);
+            try {
+                int parsedInt = Integer.parseInt(input);
+                if (!validator.isNotNegative(parsedInt)) {
+                    printer.printError(messages.negativeInputAllowed());
+                    continue;
+                }
+                return parsedInt;
+            } catch (NumberFormatException e) {
+                printer.printError(messages.enterInteger());
+            }
+        }
+    }
+
 
     public int menuChoice() {
         while (true) {
@@ -82,7 +102,15 @@ public class ConsoleUI {
     }
 
     public void deleteTask() {
-        taskService.deleteTask();
+        List<Task> tasks = taskService.getListTask();
+        if (tasks.isEmpty()) {
+            printer.printInfo(messages.nothingToDelete());
+            return;
+        }
+
+        int id = readNonNegativeInteger(messages.taskId());
+
+        taskService.deleteTask(id);
         printer.printInfo(messages.taskDeleted());
     }
 
@@ -92,7 +120,15 @@ public class ConsoleUI {
     }
 
     public void getListTask() {
-        taskService.getListTask();
+        List<Task> tasks = taskService.getListTask();
+        if (tasks.isEmpty()) {
+            printer.printInfo(messages.emptyTaskList());
+            return;
+        }
+
+        printer.print(messages.taskList());
+        for (Task task : tasks)
+            printer.print(task.getId() + ". " + task.getName());
     }
 
     public void markTaskDone() {
