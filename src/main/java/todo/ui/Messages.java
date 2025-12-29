@@ -19,12 +19,17 @@ public class Messages {
     private static final String TASK_DELETED = "Task deleted!";
     private static final String TASK_UPDATED = "Task updated!";
     private static final String TASK_DONE = "Task Done:";
+    private static final String EMPTY_TASK_LIST = "The task list is empty!";
+    private static final String NOTHING_TO_DELETE = "The task list is empty. Nothing to delete.";
+    private static final String TASK_LIST = "The task list:\n";
     // PROMPT
     private static final String TASK_NAME = "Enter task name:";
     private static final String TASK_DESCRIPTION = "Enter task description:";
+    private static final String TASK_ID = "Enter task id:";
     // ERROR
     private static final String EMPTY_IS_NOT_ALLOWED = "Empty input is not allowed.";
     private static final String ENTER_INTEGER = "Invalid input. Enter an integer.";
+    private static final String NEGATIVE_INPUT_ALLOWED = "Negative inputs are not allowed.";
     private static final String MENU_INVALID_OPTION = "Invalid option. Choose 1-6.";
     private static final String UNEXPECTED_MENU_OPTION = "Unexpected menu option:";
 
@@ -59,6 +64,18 @@ public class Messages {
         return TASK_DONE;
     }
 
+    public String nothingToDelete() {
+        return NOTHING_TO_DELETE;
+    }
+
+    public String emptyTaskList() {
+        return EMPTY_TASK_LIST;
+    }
+
+    public String taskList() {
+        return TASK_LIST;
+    }
+
     // PROMPT
     public String taskName() {
         return TASK_NAME;
@@ -66,6 +83,9 @@ public class Messages {
 
     public String taskDescription() {
         return TASK_DESCRIPTION;
+    }
+    public String taskId() {
+        return TASK_ID;
     }
 
     // ERROR
@@ -75,6 +95,10 @@ public class Messages {
 
     public String enterInteger() {
         return ENTER_INTEGER;
+    }
+
+    public String negativeInputAllowed() {
+        return NEGATIVE_INPUT_ALLOWED;
     }
 
     public String menuInvalidOption() {
