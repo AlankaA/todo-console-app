@@ -1,6 +1,7 @@
 package todo.service;
 
 import todo.model.Task;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ public class TaskService {
     private int nextId = 0;
 
     public TaskService() {
-        listTasks = new ArrayList<Task>();
+        listTasks = new ArrayList<>();
     }
 
     public void addTask(String name, String description) {
@@ -18,21 +19,26 @@ public class TaskService {
     }
 
     public void deleteTask(int id) {
-        listTasks.remove(id);
+        listTasks.remove(getTaskById(id));
     }
 
-    public void updateTask() {
-
+    public void updateTask(Task task, String name, String description) {
+        task.setName(name);
+        task.setDescription(description);
     }
 
-    public List<Task> getListTask(){
+    public List<Task> getListTask() {
         return listTasks;
     }
 
-    public void markTaskDone() {}
+    public void markTaskDone() {
+    }
 
-    public int getId(){
-        int id = 0;
-        return id;
+    public Task getTaskById(int id) {
+        for (Task task : listTasks)
+            if (task.getId() == id) {
+                return task;
+            }
+        return null;
     }
 }
