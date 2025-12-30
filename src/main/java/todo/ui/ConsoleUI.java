@@ -109,13 +109,33 @@ public class ConsoleUI {
         }
 
         int id = readNonNegativeInteger(messages.taskId());
+        if (taskService.getTaskById(id) == null) {
+            printer.printError(messages.idNotFound());
+            return;
+        }
 
         taskService.deleteTask(id);
         printer.printInfo(messages.taskDeleted());
     }
 
     public void updateTask() {
-        taskService.updateTask();
+        List<Task> tasks = taskService.getListTask();
+        if (tasks.isEmpty()) {
+            printer.printInfo(messages.nothingToUpdate());
+            return;
+        }
+
+        int id = readNonNegativeInteger(messages.taskId());
+        Task task = taskService.getTaskById(id);
+        if (task == null) {
+            printer.printError(messages.idNotFound());
+            return;
+        }
+
+        String name = readNonEmptyInput(messages.taskName());
+        String description = readNonEmptyInput(messages.taskDescription());
+        taskService.updateTask(task, name, description);
+
         printer.printInfo(messages.taskUpdated());
     }
 
@@ -126,12 +146,17 @@ public class ConsoleUI {
             return;
         }
 
-        printer.print(messages.taskList());
+        printer.printInfo(messages.taskList());
         for (Task task : tasks)
-            printer.print(task.getId() + ". " + task.getName());
+            printer.print(task.getId() + ". " + task.getName() + " (" + task.getDescription() + ")");
     }
 
     public void markTaskDone() {
+        List<Task> tasks = taskService.getListTask();
+        if (tasks.isEmpty()) {
+            printer.printInfo(messages.nothingToMark());
+            return;
+        }
         taskService.markTaskDone();
         printer.printInfo(messages.taskDone());
     }
