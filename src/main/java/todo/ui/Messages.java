@@ -3,7 +3,7 @@ package todo.ui;
 public class Messages {
     // MENU
     private static final String MENU = """
-            \n========MENU========
+            \n==========MENU==========
             Choose one from the options:
             1. Add task
             2. Delete task
@@ -11,7 +11,7 @@ public class Messages {
             4. Get list of tasks
             5. Mark task done
             6. Exit
-            =====================""";
+            =========================""";
     // INFO
     private static final String EXIT = "Exiting...";
     private static final String FINISHED = "Program is finished!";
@@ -21,7 +21,10 @@ public class Messages {
     private static final String TASK_DONE = "Task Done:";
     private static final String EMPTY_TASK_LIST = "The task list is empty!";
     private static final String NOTHING_TO_DELETE = "The task list is empty. Nothing to delete.";
+    private static final String NOTHING_TO_UPDATE = "The task list is empty. Nothing to update.";
+    private static final String NOTHING_TO_MARK = "The task list is empty. Nothing to mark.";
     private static final String TASK_LIST = "The task list:\n";
+    private static final String ID_NOT_FOUND = "The task ID is not found!";
     // PROMPT
     private static final String TASK_NAME = "Enter task name:";
     private static final String TASK_DESCRIPTION = "Enter task description:";
@@ -31,7 +34,6 @@ public class Messages {
     private static final String ENTER_INTEGER = "Invalid input. Enter an integer.";
     private static final String NEGATIVE_INPUT_ALLOWED = "Negative inputs are not allowed.";
     private static final String MENU_INVALID_OPTION = "Invalid option. Choose 1-6.";
-    private static final String UNEXPECTED_MENU_OPTION = "Unexpected menu option:";
 
 
     //MENU
@@ -72,8 +74,20 @@ public class Messages {
         return EMPTY_TASK_LIST;
     }
 
+    public String nothingToUpdate() {
+        return NOTHING_TO_UPDATE;
+    }
+
+    public String nothingToMark() {
+        return NOTHING_TO_MARK;
+    }
+
     public String taskList() {
         return TASK_LIST;
+    }
+
+    public String idNotFound() {
+        return ID_NOT_FOUND;
     }
 
     // PROMPT
@@ -84,6 +98,7 @@ public class Messages {
     public String taskDescription() {
         return TASK_DESCRIPTION;
     }
+
     public String taskId() {
         return TASK_ID;
     }
@@ -105,7 +120,4 @@ public class Messages {
         return MENU_INVALID_OPTION;
     }
 
-    public String unexpectedMenuOption() {
-        return UNEXPECTED_MENU_OPTION;
-    }
 }
